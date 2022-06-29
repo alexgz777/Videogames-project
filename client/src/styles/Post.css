@@ -1,0 +1,35 @@
+.post {
+  display: grid;
+  grid-template-columns: repeat(200px, 1fr);
+  margin-top: 7em;
+  margin-bottom: 7em;
+  justify-items: center;
+}
+.inputs {
+  display: grid;
+  margin: 1em;
+  width: 20em;
+}
+label {
+  font-size: 16px;
+  color: #ffffff;
+}
+.error {
+  color: #9f0014;
+}
+.lista {
+  list-style: none;
+}
+.button__create {
+  width: 10em;
+  height: 4em;
+  background-color: #010101;
+  color: #ffffff;
+  border-radius: 5px;
+  font-weight: bolder;
+  font-size: large;
+}
+.button__create:hover {
+  color: #010101;
+  background-color: #ffffff;
+}

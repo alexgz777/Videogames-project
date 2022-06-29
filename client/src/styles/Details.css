@@ -1,0 +1,35 @@
+.button__link {
+  width: 10em;
+  height: 3em;
+  display: grid;
+  margin: 2em;
+}
+.button__back {
+  background-color: #ffffff;
+  color: #1f1f1f;
+}
+.button__back:hover {
+  color: #ffffff;
+  background-color: #1f1f1f;
+}
+.details {
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+.details__image {
+  width: 37em;
+  height: 37em;
+  border-radius: 5px;
+  border: #ffffff solid;
+  display: grid;
+  justify-self: center;
+}
+.description {
+  width: 37em;
+  height: 37em;
+  display: grid;
+  justify-self: center;
+  font-size: 18px;
+}

@@ -1,0 +1,28 @@
+.landing {
+margin-top: 8em;  
+}
+.landing__button {
+  width: 15em;
+  height: 8em;
+  background-image: url("../assets/logo.jpg");
+
+  border-radius: 5px;
+  border: 10px;
+  border-color: #1f1f1f;
+  text-align: center;
+}
+
+.landing__button:hover {
+  outline: 1px solid white;
+  outline-offset: -6px;
+}
+
+.h2 {
+  font-size: 50px;
+  color: #ffffff;
+}
+
+.p {
+  font-size: 50px;
+  color: #ffffff;
+}

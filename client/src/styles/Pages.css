@@ -1,0 +1,21 @@
+.numeroPaginas{
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    grid-column: 2/3;
+    grid-row: 1;
+
+}
+
+.numero{
+    display: inline;
+}
+
+.btn{
+    color:  aliceblue;;
+    float: left;
+    height: 30px;
+
+    padding: 8px 16px;
+    text-decoration: none;
+}
