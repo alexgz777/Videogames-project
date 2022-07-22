@@ -4,10 +4,12 @@ const { Videogame, Genre } = require("../db");
 
 const getApiVideogames = async () => {
   const apiRequest = await axios
-    .get(`https://api.rawg.io/api/games?key=${process.env.DB_API_KEY}`)
-    .then((response) => response.data.results);
+    .get(
+      `https://api.rawg.io/api/games?key=${process.env.DB_API_KEY}&page=1&page_size=100`
+    )
+    .then((response) => response.data);
 
-  return apiRequest.map((e) => {
+  return apiRequest.results.map((e) => {
     return {
       id: e.id,
       nombre: e.name,
@@ -16,13 +18,14 @@ const getApiVideogames = async () => {
       rating: e.rating,
       imagen: e.background_image,
       plataformas: e.platforms.map((p) => p.platform.name),
+      generos: e.genres.map((t) => t.name),
       fromDb: false,
     };
   });
 };
 
 const getDbVideogames = async () => {
-  return await Videogame.findAll({
+  const dbRequest = await Videogame.findAll({
     include: {
       model: Genre,
       attributes: ["name"],
@@ -31,6 +34,7 @@ const getDbVideogames = async () => {
       },
     },
   });
+  return dbRequest;
 };
 
 const getAllVideogames = async () => {

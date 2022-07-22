@@ -11,7 +11,7 @@ export default function Landing() {
               <button className="landing__button"></button>
             </Link>
           <p className="p">
-            Si amas el mundo gamer, este es tu lugar.
+            En este sitio te ofrecemos toda la info sobre los ultimos juegos del mercado
           </p>
         </div>
     </div>

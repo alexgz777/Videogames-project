@@ -9,7 +9,7 @@
 .li {
   background-color: #9f0014;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   justify-items: center;
   align-items: center;
 }

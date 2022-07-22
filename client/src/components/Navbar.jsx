@@ -17,7 +17,7 @@ function BarraNav() {
             Videojuegos
           </Link>
           <Link to="/home/post" className="navbtn">
-            Postear videojuegos
+            Postear Juegos
           </Link>
           <Searchbar />
         </li>

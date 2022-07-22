@@ -8,6 +8,7 @@ import {
   orderByName,
   orderByRating,
   getGenres,
+  resetFilter,
 } from "../actions";
 import Card from "./Card";
 import Pages from "./Pages";
@@ -38,6 +39,8 @@ export default function Home() {
 
   function handleClick(e) {
     e.preventDefault();
+    document.getElementById("filter").reset();
+    dispatch(resetFilter());
     dispatch(getVideogames());
   }
 
@@ -64,65 +67,68 @@ export default function Home() {
   }
 
   return (
-    <>
-      <div className="home__filter-page">
-        <div className="filters">
-          <label>Ordernar alfabeticamente:</label>
-          <select onChange={(e) => handleOrderName(e)}>
-            <option value="asc">Ascendente</option>
-            <option value="desc">Descendente</option>
-          </select>
-          <label>Ordernar por Rating:</label>
-          <select onChange={(e) => handleOrderRating(e)}>
-            <option value="ascRat">Ascendente</option>
-            <option value="descRat">Descendente</option>
-          </select>
-          <br></br>
-          <label>Mostrar videojuegos:</label>
-          <select onChange={(e) => handleFilterOrigin(e)}>
-            <option value="todos">Todos</option>
-            <option value="agregados">Agregados</option>
-            <option value="existentes">Existentes</option>
-          </select>
-          <label>Seleccionar generos:</label>
-          <select onChange={(e) => handleFilterGenre(e)}>
-            {genres?.map((e) => {
-              return <option value="genre">{e.name}</option>;
-            })}
-          </select>
-        </div>
-        <div className="refresh__pages">
-          <button
-            className="home__refresh"
-            onClick={(e) => {
-              handleClick(e);
-            }}
-          >
-            Actualizar
-          </button>
-
-          <Pages
-            GamesPerPage={GamesPerPage}
-            videogames={videogames.length}
-            pages={pages}
-          />
-        </div>
+    <div className="home">
+      <div className="filters">
+        <label>Ordernar alfabeticamente:</label>
+        <select id="filter" onChange={(e) => handleOrderName(e)}>
+          <option value="--">--</option>
+          <option value="asc">Ascendente</option>
+          <option value="desc">Descendente</option>
+        </select>
+        <label>Ordernar por Rating:</label>
+        <select id="filter" onChange={(e) => handleOrderRating(e)}>
+          <option value="--">--</option>
+          <option value="ascRat">Ascendente</option>
+          <option value="descRat">Descendente</option>
+        </select>
+        <br></br>
+        <label>Mostrar videojuegos:</label>
+        <select id="filter" onChange={(e) => handleFilterOrigin(e)}>
+          <option value="todos">Todos</option>
+          <option value="agregados">Agregados</option>
+          <option value="existentes">Existentes</option>
+        </select>
+        <label>Seleccionar generos:</label>
+        <select id="filter" onChange={(e) => handleFilterGenre(e)}>
+          <option value="--">--</option>
+          {genres?.map((e) => {
+            return (
+              <option key={e.name} value={e.name}>
+                {e.name}
+              </option>
+            );
+          })}
+        </select>
+        <button
+          className="home__refresh"
+          onClick={(e) => {
+            handleClick(e);
+          }}
+        >
+          Limpiar Filtros
+        </button>
       </div>
-
-      <div className="cards">
-        {currentGames?.map((e) => {
-          return (
-            <Card id={e.id} imagen={e.imagen} nombre={e.nombre} generos={e.generos} />
-          );
-        })}
-      </div>
-      <div className="home__filter-page">
+      <div className="refresh__pages">
         <Pages
+          currentPage={CurrentPage}
           GamesPerPage={GamesPerPage}
           videogames={videogames.length}
           pages={pages}
         />
       </div>
-    </>
+      <div className="cards">
+        {currentGames?.map((e) => {
+          return (
+            <Card
+              key={e.id}
+              id={e.id}
+              imagen={e.imagen}
+              nombre={e.nombre}
+              generos={e.generos}
+            />
+          );
+        })}
+      </div>
+    </div>
   );
 }

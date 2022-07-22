@@ -1,5 +1,7 @@
 .landing {
-margin-top: 8em;  
+  margin-top: 8em;
+  display: grid;
+  place-items: center;
 }
 .landing__button {
   width: 15em;
@@ -7,22 +9,55 @@ margin-top: 8em;
   background-image: url("../assets/logo.jpg");
 
   border-radius: 5px;
-  border: 10px;
-  border-color: #1f1f1f;
+  border: 1px solid #ffffff;
   text-align: center;
 }
 
 .landing__button:hover {
-  outline: 1px solid white;
+  outline: 1px solid #ffffff;
   outline-offset: -6px;
+  transition: all 0.3s ease-in-out;
 }
 
 .h2 {
   font-size: 50px;
   color: #ffffff;
+
+  animation-name: title1;
+  animation-duration: 1.5s;
 }
 
 .p {
-  font-size: 50px;
+  text-align: center;
+  font-size: 35px;
+  font-weight: lighter;
   color: #ffffff;
+  width: 20em;
+
+  animation-name: title2;
+  animation-duration: 1.5s;
+}
+
+@keyframes title1 {
+  0% {
+    margin-right: 10em;
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    margin-right: 0;
+  }
+}
+
+@keyframes title2 {
+  0% {
+    margin-left: 10em;
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    margin-left: 0;
+  }
 }

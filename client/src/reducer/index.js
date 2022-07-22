@@ -58,15 +58,14 @@ export const rootReducer = (state = initialState, action) => {
 
     case "FILTER_GENRE":
       const games = state.videogamesFilter;
-      let filtered = games;
+      let filtered = games.filter((e) =>
+        e.generos.includes(action.payload.toString())
+      );
+      console.log(games.map(t=>t.generos))
+console.log(action.payload)
+console.log(filtered)
 
-      if (action.payload === "agregados") {
-        filtered = games.filter((e) => e.fromDb === true);
-      } else if (action.payload === "existentes") {
-        filtered = games.filter((e) => e.fromDb === false);
-      }
-
-      return {
+return {
         ...state,
         videogames: filtered,
       };
@@ -75,13 +74,13 @@ export const rootReducer = (state = initialState, action) => {
       let ordered =
         action.payload === "asc"
           ? state.videogames.sort(function (a, b) {
-              if (a.name > b.name) return 1;
-              if (a.name < b.name) return -1;
+              if (a.nombre > b.nombre) return 1;
+              if (a.nombre < b.nombre) return -1;
               return 0;
             })
           : state.videogames.sort(function (a, b) {
-              if (a.name > b.name) return -1;
-              if (a.name < b.name) return 1;
+              if (a.nombre > b.nombre) return -1;
+              if (a.nombre < b.nombre) return 1;
               return 0;
             });
       return {
@@ -106,7 +105,12 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         videogames: orderedRating,
       };
-
+    case "RESET":
+      return {
+        ...state,
+        videogames: [],
+        videogamesFilter: [],
+      };
     default:
       return state;
   }

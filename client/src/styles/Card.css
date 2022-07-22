@@ -1,6 +1,6 @@
 .card {
   width: 300px;
-  height: 400px;
+  height: 450px;
   justify-self: center;
   align-self: center;
   background-color: #9f0014;
@@ -25,7 +25,10 @@
 
 .card__genres {
   color: #ffffff;
+  list-style: none;
+  padding: 0;
 }
+
 a:-webkit-any-link {
   color: none;
   text-decoration: none;

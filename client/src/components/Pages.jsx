@@ -1,7 +1,12 @@
 import React from "react";
 import "../styles/Pages.css";
 
-export default function Pages({ GamesPerPage, videogames, pages }) {
+export default function Pages({
+  currentPage,
+  GamesPerPage,
+  videogames,
+  pages,
+}) {
   const pageNumber = [];
 
   for (let i = 0; i < Math.ceil(videogames / GamesPerPage); i++) {
@@ -12,6 +17,13 @@ export default function Pages({ GamesPerPage, videogames, pages }) {
     <>
       <ul className="numeroPaginas">
         <li className="numero">
+          <button
+            onClick={() => pages(currentPage - 1)}
+            className="btn"
+            key={currentPage - 1}
+          >
+            {"<"}
+          </button>
           {pageNumber &&
             pageNumber.map((number) => {
               return (
@@ -24,6 +36,13 @@ export default function Pages({ GamesPerPage, videogames, pages }) {
                 </button>
               );
             })}
+          <button
+            onClick={() => pages(currentPage + 1)}
+            className="btn"
+            key={currentPage + 1}
+          >
+            {">"}
+          </button>
         </li>
       </ul>
     </>
