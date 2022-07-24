@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchGameName } from "../actions";
 import "../styles/Searchbar.css";

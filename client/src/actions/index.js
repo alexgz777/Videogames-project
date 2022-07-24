@@ -1,17 +1,21 @@
 import axios from "axios";
 
 export function getVideogames() {
-  return async function (dispatch) {
-    const request = await axios.get("/videogames");
-    return dispatch({
-      type: "GET_VIDEOGAMES",
-      payload: request.data,
-    });
+  return async function(dispatch) {
+    try {
+      const request = await axios.get("/videogames");
+      return dispatch({
+        type: "GET_VIDEOGAMES",
+        payload: request.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 }
 
 export function getVideogameByID(id) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     const request = await axios.get(`/videogames/${id}`);
     return dispatch({
       type: "GET_VIDEOGAME",
@@ -21,7 +25,7 @@ export function getVideogameByID(id) {
 }
 
 export function getGenres() {
-  return async function (dispatch) {
+  return async function(dispatch) {
     const request = await axios.get("/genres");
     return dispatch({
       type: "GET_GENRES",
@@ -31,7 +35,7 @@ export function getGenres() {
 }
 
 export function getPlatforms() {
-  return async function (dispatch) {
+  return async function(dispatch) {
     const request = await axios.get("/platforms");
     return dispatch({
       type: "GET_PLATFORMS",
@@ -41,11 +45,9 @@ export function getPlatforms() {
 }
 
 export function searchGameName(name) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      const request = await axios.get(
-        `/videogames?name=${name}`
-      );
+      const request = await axios.get(`/videogames?name=${name}`);
       return dispatch({
         type: "GET_GAME_NAME",
         payload: request.data,
@@ -91,12 +93,9 @@ export function resetFilter() {
 }
 
 export function postVideogame(data) {
-  return async function (dispatch) {
+  return async function(dispatch) {
     try {
-      const response = await axios.post(
-        "/videogames",
-        data
-      );
+      const response = await axios.post("/videogames", data);
       dispatch({ type: "POST_VIDEOGAME", payload: response });
     } catch (error) {
       console.log(error);
