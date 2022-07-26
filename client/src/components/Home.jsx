@@ -13,7 +13,7 @@ import {
 import Card from "./Card";
 import Pages from "./Pages";
 
-export default function Home() {
+function Home() {
   const dispatch = useDispatch();
   const videogames = useSelector((state) => state.videogames);
   const genres = useSelector((state) => state.genres);
@@ -90,8 +90,7 @@ export default function Home() {
         </select>
         <label>Seleccionar generos:</label>
         <select id="filter" onChange={(e) => handleFilterGenre(e)}>
-          <option value="--">--</option>
-          {genres?.map((e) => {
+          {genres.map((e) => {
             return (
               <option key={e.name} value={e.name}>
                 {e.name}
@@ -117,7 +116,7 @@ export default function Home() {
         />
       </div>
       <div className="cards">
-        {currentGames?.map((e) => {
+        {currentGames.map((e) => {
           return (
             <Card
               key={e.id}
@@ -132,3 +131,4 @@ export default function Home() {
     </div>
   );
 }
+export default Home;

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postVideogame, getGenres, getPlatforms } from "../actions";
 import "../styles/Post.css";
 
-export default function Post() {
+function Post() {
   const genres = useSelector((state) => state.genres);
   const platforms = useSelector((state) => state.platforms);
   const dispatch = useDispatch();
@@ -201,3 +201,4 @@ export default function Post() {
     </div>
   );
 }
+export default Post;

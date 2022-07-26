@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 import Searchbar from "./Searchbar";
-const logo = require("../assets/logo.jpg");
+import logo from "../assets/logo.jpg";
 
-function BarraNav() {
+function Navbar() {
   return (
     <nav className="navbar">
       <ul className="ul">
@@ -26,4 +26,4 @@ function BarraNav() {
   );
 }
 
-export default BarraNav;
+export default Navbar;

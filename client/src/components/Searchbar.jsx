@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { searchGameName } from "../actions";
 import "../styles/Searchbar.css";
 
-export default function BarraSearch() {
+export default function Searchbar() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 

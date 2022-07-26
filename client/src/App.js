@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -15,7 +16,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/home/post" element={<Post />} />
-        <Route path="home/:id" element={<Details />} />
+        <Route path="/home/:id" element={<Details />} />
       </Routes>
     </Router>
   );
